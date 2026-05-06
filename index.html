@@ -21,6 +21,7 @@
             justify-content: center;
             cursor: pointer;
             border-radius: 10px;
+            font-size: 20px;
         }
 
         button {
@@ -29,9 +30,9 @@
             cursor: pointer;
         }
 
-        #result {
-            margin-top: 20px;
-            font-size: 20px;
+        #result, #best, #history {
+            margin-top: 15px;
+            font-size: 18px;
         }
     </style>
 </head>
@@ -43,14 +44,25 @@
     <div id="gameBox">Clique ici</div>
 
     <div id="result"></div>
+    <div id="best"></div>
+    <div id="history"></div>
 
     <script>
         let startTime;
         let timeout;
         let canClick = false;
+        let history = [];
 
         const box = document.getElementById("gameBox");
         const result = document.getElementById("result");
+        const bestDisplay = document.getElementById("best");
+        const historyDisplay = document.getElementById("history");
+
+        // Charger le meilleur score
+        let bestScore = localStorage.getItem("bestScore");
+        if (bestScore) {
+            bestDisplay.textContent = "🏆 Meilleur score : " + bestScore + " ms";
+        }
 
         function startGame() {
             result.textContent = "";
@@ -59,7 +71,7 @@
 
             canClick = false;
 
-            const delay = Math.random() * 3000 + 2000; // 2 à 5 sec
+            const delay = Math.random() * 3000 + 2000;
 
             timeout = setTimeout(() => {
                 box.style.backgroundColor = "green";
@@ -79,10 +91,25 @@
             }
 
             const reactionTime = Date.now() - startTime;
+
+            // Affichage résultat
+            result.textContent = "⏱ Temps : " + reactionTime + " ms";
+
+            // Historique
+            history.push(reactionTime);
+            historyDisplay.textContent = "Historique : " + history.join(" ms | ") + " ms";
+
+            // Meilleur score
+            if (!bestScore || reactionTime < bestScore) {
+                bestScore = reactionTime;
+                localStorage.setItem("bestScore", bestScore);
+                bestDisplay.textContent = "🏆 Nouveau record : " + bestScore + " ms 🎉";
+            } else {
+                bestDisplay.textContent = "🏆 Meilleur score : " + bestScore + " ms";
+            }
+
             box.style.backgroundColor = "grey";
             box.textContent = "Rejouer ?";
-            result.textContent = "Temps de réaction : " + reactionTime + " ms";
-
             canClick = false;
         });
     </script>
