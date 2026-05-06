@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Jeu de Réaction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #222;
+            color: white;
+        }
+
+        #gameBox {
+            width: 300px;
+            height: 300px;
+            margin: 50px auto;
+            background-color: grey;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>⚡ Jeu de Réaction</h1>
+    <button onclick="startGame()">Start</button>
+
+    <div id="gameBox">Clique ici</div>
+
+    <div id="result"></div>
+
+    <script>
+        let startTime;
+        let timeout;
+        let canClick = false;
+
+        const box = document.getElementById("gameBox");
+        const result = document.getElementById("result");
+
+        function startGame() {
+            result.textContent = "";
+            box.style.backgroundColor = "red";
+            box.textContent = "Attends...";
+
+            canClick = false;
+
+            const delay = Math.random() * 3000 + 2000; // 2 à 5 sec
+
+            timeout = setTimeout(() => {
+                box.style.backgroundColor = "green";
+                box.textContent = "CLIQUE !";
+                startTime = Date.now();
+                canClick = true;
+            }, delay);
+        }
+
+        box.addEventListener("click", () => {
+            if (!canClick) {
+                clearTimeout(timeout);
+                box.style.backgroundColor = "grey";
+                box.textContent = "Trop tôt ! 😅";
+                result.textContent = "Tu as cliqué trop tôt !";
+                return;
+            }
+
+            const reactionTime = Date.now() - startTime;
+            box.style.backgroundColor = "grey";
+            box.textContent = "Rejouer ?";
+            result.textContent = "Temps de réaction : " + reactionTime + " ms";
+
+            canClick = false;
+        });
+    </script>
+
+</body>
+</html>
