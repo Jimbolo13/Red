@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Extremely Scientific Personality Quiz™</title>
 
-<!-- GOOGLE FONT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -21,14 +23,14 @@
 body{
     font-family:'Poppins', sans-serif;
     background:
-    linear-gradient(135deg,#121212,#1f1147,#101d36);
+    radial-gradient(circle at top left,#2d1b69,#111827 40%,#0f172a);
     color:white;
     min-height:100vh;
     padding:40px 20px;
 }
 
 .container{
-    max-width:900px;
+    max-width:950px;
     margin:auto;
 }
 
@@ -38,165 +40,167 @@ body{
 }
 
 .main-title h1{
-    font-size:3rem;
-    font-weight:700;
-    background:linear-gradient(90deg,#ff7bff,#7be0ff,#96ff7b);
+    font-size:3.5rem;
+    font-weight:800;
+    background:linear-gradient(90deg,#7be0ff,#c084fc,#5eead4);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 }
 
 .main-title p{
-    margin-top:10px;
+    margin-top:15px;
     color:#cfcfcf;
     font-size:1.1rem;
 }
 
 .question{
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(10px);
-    border:1px solid rgba(255,255,255,0.1);
-    border-radius:25px;
-    padding:30px;
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+    border-radius:28px;
+    padding:35px;
     margin-bottom:30px;
     box-shadow:
-    0 10px 30px rgba(0,0,0,0.3);
-    transition:0.3s;
+    0 10px 35px rgba(0,0,0,0.35);
+    transition:0.25s;
 }
 
 .question:hover{
-    transform:translateY(-3px);
+    transform:translateY(-4px);
 }
 
 .question h2{
-    margin-bottom:20px;
     font-size:1.4rem;
-    color:#ffffff;
+    margin-bottom:25px;
+    line-height:1.5;
+}
+
+.image-placeholder{
+    width:100%;
+    height:240px;
+    border-radius:24px;
+    border:2px dashed rgba(255,255,255,0.15);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+    margin-bottom:25px;
+    color:#bcbcbc;
+    background:rgba(255,255,255,0.03);
 }
 
 label{
     display:block;
-    background:rgba(255,255,255,0.05);
-    padding:14px;
-    border-radius:15px;
-    margin:10px 0;
+    margin:12px 0;
+    padding:16px;
+    border-radius:18px;
+    background:rgba(255,255,255,0.04);
     cursor:pointer;
     transition:0.2s;
 }
 
 label:hover{
-    background:rgba(255,255,255,0.12);
+    background:rgba(255,255,255,0.11);
 }
 
 input[type="radio"]{
-    margin-right:10px;
+    margin-right:12px;
     accent-color:#7be0ff;
 }
 
 input[type="text"],
 textarea{
     width:100%;
+    padding:18px;
     border:none;
-    border-radius:15px;
-    padding:15px;
-    margin-top:10px;
-    font-family:'Poppins', sans-serif;
-    font-size:1rem;
-    background:rgba(255,255,255,0.08);
+    border-radius:18px;
+    background:rgba(255,255,255,0.06);
     color:white;
+    font-size:1rem;
+    font-family:'Poppins', sans-serif;
     outline:none;
 }
 
 textarea{
-    min-height:130px;
+    min-height:140px;
     resize:none;
 }
 
 input::placeholder,
 textarea::placeholder{
-    color:#c9c9c9;
-}
-
-.image-placeholder{
-    width:100%;
-    height:230px;
-    border-radius:20px;
-    border:2px dashed rgba(255,255,255,0.2);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:rgba(255,255,255,0.03);
-    color:#b8b8b8;
-    margin-bottom:20px;
-    text-align:center;
-    padding:20px;
+    color:#bbbbbb;
 }
 
 button{
     border:none;
-    padding:16px 28px;
     border-radius:18px;
+    padding:16px 28px;
     font-size:1rem;
     font-weight:600;
-    font-family:'Poppins', sans-serif;
     cursor:pointer;
-    background:linear-gradient(90deg,#7be0ff,#c67bff);
     color:white;
+    background:
+    linear-gradient(90deg,#7be0ff,#c084fc);
     transition:0.25s;
+    font-family:'Poppins', sans-serif;
 }
 
 button:hover{
     transform:scale(1.03);
-    opacity:0.95;
 }
 
 #reactionBox{
     width:100%;
-    height:220px;
-    border-radius:25px;
+    height:230px;
+    border-radius:24px;
     display:flex;
     justify-content:center;
     align-items:center;
     font-size:2rem;
-    font-weight:600;
+    font-weight:700;
     margin-top:20px;
-    background:#555;
+    background:#5c5c5c;
     cursor:pointer;
     transition:0.2s;
 }
 
-#reactionResult{
-    margin-top:20px;
+#reactionResult,
+#bestReaction{
+    margin-top:18px;
     font-size:1.2rem;
-}
-
-.slider-container{
-    text-align:center;
-    margin-top:20px;
 }
 
 input[type="range"]{
     width:100%;
+    margin-top:25px;
 }
 
 .sliderValue{
-    font-size:3rem;
+    text-align:center;
+    margin-top:15px;
+    font-size:3.5rem;
     font-weight:700;
-    margin-top:10px;
     color:#7be0ff;
 }
 
 .finalMessage{
-    margin-top:30px;
     text-align:center;
     font-size:1.5rem;
     line-height:1.7;
+    margin-top:30px;
 }
 
 .footer{
     text-align:center;
     margin-top:50px;
-    color:#a5a5a5;
-    font-size:0.9rem;
+    color:#9e9e9e;
+    font-size:0.95rem;
+}
+
+.highlight{
+    color:#7be0ff;
+    font-weight:700;
 }
 
 </style>
@@ -208,15 +212,18 @@ input[type="range"]{
 
 <div class="main-title">
     <h1>🎧 Extremely Scientific Personality Quiz™</h1>
+
     <p>
-        Probably the most unnecessarily deep quiz ever created.
+        probably way too deep for absolutely no reason
     </p>
 </div>
 
 <!-- 1 -->
 <div class="question">
 
-    <h2>1. Before we begin, please enter your name:</h2>
+    <h2>
+        1. Before we begin, please enter your name:
+    </h2>
 
     <input
         type="text"
@@ -239,7 +246,9 @@ input[type="range"]{
 <!-- 3 -->
 <div class="question">
 
-    <h2>3. What’s the closest match to your current mood?</h2>
+    <h2>
+        3. What’s the closest match to your current mood?
+    </h2>
 
     <div class="image-placeholder">
         INSERT IMAGE HERE (X)
@@ -255,7 +264,13 @@ input[type="range"]{
 <!-- 4 -->
 <div class="question">
 
-    <h2>4. Where would you rather spend an all-nighter alone?</h2>
+    <h2>
+        4. Where would you rather spend an all-nighter alone?
+    </h2>
+
+    <div class="image-placeholder">
+        INSERT IMAGE HERE (X)
+    </div>
 
     <label>
         <input type="radio" name="q4">
@@ -276,10 +291,6 @@ input[type="range"]{
         <input type="radio" name="q4">
         Sitting on top of a hill overlooking the entire city and its lights.
     </label>
-
-    <div class="image-placeholder">
-        INSERT IMAGE HERE (X)
-    </div>
 
 </div>
 
@@ -306,7 +317,9 @@ input[type="range"]{
 <!-- 6 -->
 <div class="question">
 
-    <h2>6. Which guitar looks the coolest?</h2>
+    <h2>
+        6. Which guitar looks the coolest?
+    </h2>
 
     <div class="image-placeholder">
         INSERT GUITAR IMAGES HERE (X)
@@ -322,32 +335,56 @@ input[type="range"]{
 <!-- 7 -->
 <div class="question">
 
-    <h2>7. Black shoes or white shoes?</h2>
+    <h2>
+        7. Who is the most handsome of these fellas?
+    </h2>
 
     <div class="image-placeholder">
-        INSERT SHOE IMAGES HERE (X)
+        INSERT FELLA IMAGES HERE (A / B / C / D)
     </div>
 
-    <label><input type="radio" name="q7">Black</label>
-    <label><input type="radio" name="q7">White</label>
+    <label><input type="radio" name="q7">A</label>
+    <label><input type="radio" name="q7">B</label>
+    <label><input type="radio" name="q7">C</label>
+    <label><input type="radio" name="q7">D</label>
 
 </div>
 
 <!-- 8 -->
 <div class="question">
 
-    <h2>8. Where would you rather live a full year?</h2>
+    <h2>
+        8. Black shoes or white shoes?
+    </h2>
 
-    <label><input type="radio" name="q8">Canada</label>
-    <label><input type="radio" name="q8">Australia</label>
-    <label><input type="radio" name="q8">China</label>
+    <div class="image-placeholder">
+        INSERT SHOE IMAGES HERE (X)
+    </div>
+
+    <label><input type="radio" name="q8">Black</label>
+    <label><input type="radio" name="q8">White</label>
 
 </div>
 
 <!-- 9 -->
 <div class="question">
 
-    <h2>9. Testing your reaction time.</h2>
+    <h2>
+        9. Where would you rather live a full year?
+    </h2>
+
+    <label><input type="radio" name="q9">Canada</label>
+    <label><input type="radio" name="q9">Australia</label>
+    <label><input type="radio" name="q9">China</label>
+
+</div>
+
+<!-- 10 -->
+<div class="question">
+
+    <h2>
+        10. Testing your reaction time.
+    </h2>
 
     <button onclick="startReactionGame()">
         Start Test
@@ -359,12 +396,16 @@ input[type="range"]{
 
     <div id="reactionResult"></div>
 
+    <div id="bestReaction"></div>
+
 </div>
 
-<!-- 10 -->
+<!-- 11 -->
 <div class="question">
 
-    <h2>10. If colours were a family, who would be mom?</h2>
+    <h2>
+        11. If colours were a family, who would be mom?
+    </h2>
 
     <label><input type="radio" name="momColor">Red</label>
     <label><input type="radio" name="momColor">Blue</label>
@@ -383,7 +424,9 @@ input[type="range"]{
 
     <br><br>
 
-    <h2>Who would be dad?</h2>
+    <h2>
+        Who would be dad?
+    </h2>
 
     <label><input type="radio" name="dadColor">Red</label>
     <label><input type="radio" name="dadColor">Blue</label>
@@ -402,28 +445,23 @@ input[type="range"]{
 
 </div>
 
-<!-- 11 -->
-<div class="question">
-
-    <h2>11. Send me something funny. Literally anything!</h2>
-
-    <input type="file">
-
-</div>
-
 <!-- 12 -->
 <div class="question">
 
-    <h2>12. Wanna tell me about the latest movie you've watched?</h2>
+    <h2>
+        12. Send me something funny. Literally anything!
+    </h2>
 
-    <textarea placeholder="Write here..."></textarea>
+    <input type="file">
 
 </div>
 
 <!-- 13 -->
 <div class="question">
 
-    <h2>13. Have you been reading anything lately?</h2>
+    <h2>
+        13. Wanna tell me about the latest movie you've watched?
+    </h2>
 
     <textarea placeholder="Write here..."></textarea>
 
@@ -432,28 +470,37 @@ input[type="range"]{
 <!-- 14 -->
 <div class="question">
 
-    <h2>14. Pick a number between 12 and 22.</h2>
+    <h2>
+        14. Have you been reading anything lately?
+    </h2>
 
-    <div class="slider-container">
-
-        <input
-            type="range"
-            min="12"
-            max="22"
-            value="17"
-            id="songSlider"
-            oninput="updateSliderValue()"
-        >
-
-        <div class="sliderValue" id="sliderValue">
-            17
-        </div>
-
-    </div>
+    <textarea placeholder="Write here..."></textarea>
 
 </div>
 
 <!-- 15 -->
+<div class="question">
+
+    <h2>
+        15. Pick a number between 12 and 22.
+    </h2>
+
+    <input
+        type="range"
+        min="12"
+        max="22"
+        value="17"
+        id="songSlider"
+        oninput="updateSliderValue()"
+    >
+
+    <div class="sliderValue" id="sliderValue">
+        17
+    </div>
+
+</div>
+
+<!-- 16 -->
 <div class="question">
 
     <button onclick="finishQuiz()">
@@ -480,14 +527,20 @@ function updateWelcome(){
 
     if(name.trim() === ""){
 
-        document.getElementById("welcomeMessage").innerText =
-        "2. Welcome 👀";
+        document.getElementById("welcomeMessage").innerHTML =
+        `2. Welcome 👀`;
 
     } else {
 
-        document.getElementById("welcomeMessage").innerText =
-        `2. Welcome ${name}!`;
+        document.getElementById("welcomeMessage").innerHTML =
+        `
+        2. Welcome <span class="highlight">${name}</span> 👀<br><br>
 
+        Here is a series of more or less unserious questions
+        to answer on the go.<br><br>
+
+        They will reveal who you were in a past life.
+        `;
     }
 }
 
@@ -509,11 +562,13 @@ function finishQuiz(){
 
     document.getElementById("finalMessage").innerHTML =
     `
-    🎉 Congratulations, you just unlocked a playlist with <b>${number}</b> songs.<br><br>
+    🎉 Congratulations, you just unlocked a playlist with
+    <span class="highlight">${number}</span> songs.<br><br>
 
-    Coming soon.<br>
+    Coming soon.<br><br>
 
-    I’ll be analyzing your answers with the utmost scientific interest 👀
+    I’ll be analyzing your answers
+    with the utmost scientific interest 👀
     `;
 }
 
@@ -528,12 +583,29 @@ document.getElementById("reactionBox");
 const reactionResult =
 document.getElementById("reactionResult");
 
+const bestReaction =
+document.getElementById("bestReaction");
+
+// LOAD BEST SCORE
+let bestScore =
+localStorage.getItem("bestReactionTime");
+
+if(bestScore){
+
+    bestReaction.innerHTML =
+    `🏆 Best reaction time: <b>${bestScore} ms</b>`;
+}
+
 function startReactionGame(){
 
     reactionResult.innerHTML = "";
 
-    reactionBox.style.background = "#ff5c5c";
-    reactionBox.innerText = "Wait...";
+    reactionBox.style.background =
+    "#ff5c5c";
+
+    reactionBox.innerText =
+    "Wait...";
+
     canClick = false;
 
     const delay =
@@ -542,10 +614,13 @@ function startReactionGame(){
     timeout = setTimeout(() => {
 
         reactionBox.style.background =
-        "linear-gradient(135deg,#5dff8b,#37d67a)";
+        "linear-gradient(135deg,#4ade80,#22c55e)";
 
-        reactionBox.innerText = "CLICK!";
+        reactionBox.innerText =
+        "CLICK!";
+
         startTime = Date.now();
+
         canClick = true;
 
     }, delay);
@@ -557,8 +632,11 @@ reactionBox.addEventListener("click", () => {
 
         clearTimeout(timeout);
 
-        reactionBox.style.background = "#666";
-        reactionBox.innerText = "Too early 😭";
+        reactionBox.style.background =
+        "#666";
+
+        reactionBox.innerText =
+        "Too early 😭";
 
         return;
     }
@@ -567,13 +645,41 @@ reactionBox.addEventListener("click", () => {
     Date.now() - startTime;
 
     reactionResult.innerHTML =
-    `⚡ Your reaction time: <b>${reactionTime} ms</b>`;
+    `⚡ Your reaction time:
+    <b>${reactionTime} ms</b>`;
+
+    // BEST SCORE
+    if(
+        !bestScore ||
+        reactionTime < bestScore
+    ){
+
+        bestScore = reactionTime;
+
+        localStorage.setItem(
+            "bestReactionTime",
+            bestScore
+        );
+
+        bestReaction.innerHTML =
+        `🏆 New best reaction time:
+        <b>${bestScore} ms</b>`;
+
+    } else {
+
+        bestReaction.innerHTML =
+        `🏆 Best reaction time:
+        <b>${bestScore} ms</b>`;
+    }
 
     reactionBox.style.background =
-    "linear-gradient(135deg,#6c63ff,#7be0ff)";
+    "linear-gradient(135deg,#6366f1,#7be0ff)";
 
-    reactionBox.innerText = "Play again?";
+    reactionBox.innerText =
+    "Play again?";
+
     canClick = false;
+
 });
 
 </script>
