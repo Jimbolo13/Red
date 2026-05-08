@@ -1,37 +1,380 @@
-<!-- AJOUTE ÇA JUSTE APRÈS <div class="container"> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- INTRO -->
+<title>Extremely Scientific Personality Quiz™</title>
+
+<!-- GOOGLE FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    background:
+    linear-gradient(135deg,#121212,#1f1147,#101d36);
+    color:white;
+    min-height:100vh;
+    padding:40px 20px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+.main-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.main-title h1{
+    font-size:3rem;
+    font-weight:700;
+    background:linear-gradient(90deg,#ff7bff,#7be0ff,#96ff7b);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.main-title p{
+    margin-top:10px;
+    color:#cfcfcf;
+    font-size:1.1rem;
+}
+
+.question{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:25px;
+    padding:30px;
+    margin-bottom:30px;
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.3);
+    transition:0.3s;
+}
+
+.question:hover{
+    transform:translateY(-3px);
+}
+
+.question h2{
+    margin-bottom:20px;
+    font-size:1.4rem;
+    color:#ffffff;
+}
+
+label{
+    display:block;
+    background:rgba(255,255,255,0.05);
+    padding:14px;
+    border-radius:15px;
+    margin:10px 0;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+label:hover{
+    background:rgba(255,255,255,0.12);
+}
+
+input[type="radio"]{
+    margin-right:10px;
+    accent-color:#7be0ff;
+}
+
+input[type="text"],
+textarea{
+    width:100%;
+    border:none;
+    border-radius:15px;
+    padding:15px;
+    margin-top:10px;
+    font-family:'Poppins', sans-serif;
+    font-size:1rem;
+    background:rgba(255,255,255,0.08);
+    color:white;
+    outline:none;
+}
+
+textarea{
+    min-height:130px;
+    resize:none;
+}
+
+input::placeholder,
+textarea::placeholder{
+    color:#c9c9c9;
+}
+
+.image-placeholder{
+    width:100%;
+    height:230px;
+    border-radius:20px;
+    border:2px dashed rgba(255,255,255,0.2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,0.03);
+    color:#b8b8b8;
+    margin-bottom:20px;
+    text-align:center;
+    padding:20px;
+}
+
+button{
+    border:none;
+    padding:16px 28px;
+    border-radius:18px;
+    font-size:1rem;
+    font-weight:600;
+    font-family:'Poppins', sans-serif;
+    cursor:pointer;
+    background:linear-gradient(90deg,#7be0ff,#c67bff);
+    color:white;
+    transition:0.25s;
+}
+
+button:hover{
+    transform:scale(1.03);
+    opacity:0.95;
+}
+
+#reactionBox{
+    width:100%;
+    height:220px;
+    border-radius:25px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:2rem;
+    font-weight:600;
+    margin-top:20px;
+    background:#555;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+#reactionResult{
+    margin-top:20px;
+    font-size:1.2rem;
+}
+
+.slider-container{
+    text-align:center;
+    margin-top:20px;
+}
+
+input[type="range"]{
+    width:100%;
+}
+
+.sliderValue{
+    font-size:3rem;
+    font-weight:700;
+    margin-top:10px;
+    color:#7be0ff;
+}
+
+.finalMessage{
+    margin-top:30px;
+    text-align:center;
+    font-size:1.5rem;
+    line-height:1.7;
+}
+
+.footer{
+    text-align:center;
+    margin-top:50px;
+    color:#a5a5a5;
+    font-size:0.9rem;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="main-title">
+    <h1>🎧 Extremely Scientific Personality Quiz™</h1>
+    <p>
+        Probably the most unnecessarily deep quiz ever created.
+    </p>
+</div>
+
+<!-- 1 -->
 <div class="question">
+
     <h2>1. Before we begin, please enter your name:</h2>
 
-    <input 
-        type="text" 
-        id="playerName" 
+    <input
+        type="text"
+        id="playerName"
         placeholder="Enter your name..."
         oninput="updateWelcome()"
     >
+
 </div>
 
+<!-- 2 -->
 <div class="question">
-    <h2 id="welcomeMessage">2. Welcome 👀</h2>
+
+    <h2 id="welcomeMessage">
+        2. Welcome 👀
+    </h2>
+
 </div>
 
-<!-- ENSUITE RENUMÉROTE TES AUTRES QUESTIONS À PARTIR DE 3 -->
-
-<!-- REMPLACE TON ANCIENNE QUESTION 8 PAR ÇA -->
-
+<!-- 3 -->
 <div class="question">
+
+    <h2>3. What’s the closest match to your current mood?</h2>
+
+    <div class="image-placeholder">
+        INSERT IMAGE HERE (X)
+    </div>
+
+    <label><input type="radio" name="q3">A</label>
+    <label><input type="radio" name="q3">B</label>
+    <label><input type="radio" name="q3">C</label>
+    <label><input type="radio" name="q3">D</label>
+
+</div>
+
+<!-- 4 -->
+<div class="question">
+
+    <h2>4. Where would you rather spend an all-nighter alone?</h2>
+
+    <label>
+        <input type="radio" name="q4">
+        An old, run-down movie theater playing obscure films from the ‘60s.
+    </label>
+
+    <label>
+        <input type="radio" name="q4">
+        A VIP lounge at a jazz concert with a bottle of wine.
+    </label>
+
+    <label>
+        <input type="radio" name="q4">
+        A techno party with 950 complete strangers.
+    </label>
+
+    <label>
+        <input type="radio" name="q4">
+        Sitting on top of a hill overlooking the entire city and its lights.
+    </label>
+
+    <div class="image-placeholder">
+        INSERT IMAGE HERE (X)
+    </div>
+
+</div>
+
+<!-- 5 -->
+<div class="question">
+
+    <h2>
+        5. You inherit an old car. Congrats — freedom,
+        independence, questionable mechanics.
+        Which one are you picking?
+    </h2>
+
+    <div class="image-placeholder">
+        INSERT CAR IMAGES HERE (X)
+    </div>
+
+    <label><input type="radio" name="q5">A</label>
+    <label><input type="radio" name="q5">B</label>
+    <label><input type="radio" name="q5">C</label>
+    <label><input type="radio" name="q5">D</label>
+
+</div>
+
+<!-- 6 -->
+<div class="question">
+
+    <h2>6. Which guitar looks the coolest?</h2>
+
+    <div class="image-placeholder">
+        INSERT GUITAR IMAGES HERE (X)
+    </div>
+
+    <label><input type="radio" name="q6">Telecaster</label>
+    <label><input type="radio" name="q6">Stratocaster</label>
+    <label><input type="radio" name="q6">Gibson Flying V</label>
+    <label><input type="radio" name="q6">Fleabass 32</label>
+
+</div>
+
+<!-- 7 -->
+<div class="question">
+
+    <h2>7. Black shoes or white shoes?</h2>
+
+    <div class="image-placeholder">
+        INSERT SHOE IMAGES HERE (X)
+    </div>
+
+    <label><input type="radio" name="q7">Black</label>
+    <label><input type="radio" name="q7">White</label>
+
+</div>
+
+<!-- 8 -->
+<div class="question">
+
+    <h2>8. Where would you rather live a full year?</h2>
+
+    <label><input type="radio" name="q8">Canada</label>
+    <label><input type="radio" name="q8">Australia</label>
+    <label><input type="radio" name="q8">China</label>
+
+</div>
+
+<!-- 9 -->
+<div class="question">
+
+    <h2>9. Testing your reaction time.</h2>
+
+    <button onclick="startReactionGame()">
+        Start Test
+    </button>
+
+    <div id="reactionBox">
+        Click here
+    </div>
+
+    <div id="reactionResult"></div>
+
+</div>
+
+<!-- 10 -->
+<div class="question">
+
     <h2>10. If colours were a family, who would be mom?</h2>
 
-    <label><input type="radio" name="momColor"> Red</label>
-    <label><input type="radio" name="momColor"> Blue</label>
-    <label><input type="radio" name="momColor"> Green</label>
-    <label><input type="radio" name="momColor"> Yellow</label>
-    <label><input type="radio" name="momColor"> Purple</label>
-    <label><input type="radio" name="momColor"> Orange</label>
-    <label><input type="radio" name="momColor"> Pink</label>
-    <label><input type="radio" name="momColor"> Black</label>
-    <label><input type="radio" name="momColor"> White</label>
+    <label><input type="radio" name="momColor">Red</label>
+    <label><input type="radio" name="momColor">Blue</label>
+    <label><input type="radio" name="momColor">Green</label>
+    <label><input type="radio" name="momColor">Yellow</label>
+    <label><input type="radio" name="momColor">Purple</label>
+    <label><input type="radio" name="momColor">Orange</label>
+    <label><input type="radio" name="momColor">Pink</label>
+    <label><input type="radio" name="momColor">Black</label>
+    <label><input type="radio" name="momColor">White</label>
 
     <label>
         <input type="radio" name="momColor">
@@ -42,33 +385,198 @@
 
     <h2>Who would be dad?</h2>
 
-    <label><input type="radio" name="dadColor"> Red</label>
-    <label><input type="radio" name="dadColor"> Blue</label>
-    <label><input type="radio" name="dadColor"> Green</label>
-    <label><input type="radio" name="dadColor"> Yellow</label>
-    <label><input type="radio" name="dadColor"> Purple</label>
-    <label><input type="radio" name="dadColor"> Orange</label>
-    <label><input type="radio" name="dadColor"> Pink</label>
-    <label><input type="radio" name="dadColor"> Black</label>
-    <label><input type="radio" name="dadColor"> White</label>
+    <label><input type="radio" name="dadColor">Red</label>
+    <label><input type="radio" name="dadColor">Blue</label>
+    <label><input type="radio" name="dadColor">Green</label>
+    <label><input type="radio" name="dadColor">Yellow</label>
+    <label><input type="radio" name="dadColor">Purple</label>
+    <label><input type="radio" name="dadColor">Orange</label>
+    <label><input type="radio" name="dadColor">Pink</label>
+    <label><input type="radio" name="dadColor">Black</label>
+    <label><input type="radio" name="dadColor">White</label>
 
     <label>
         <input type="radio" name="dadColor">
         Stfu Jimbo you dweeb...
     </label>
+
 </div>
 
-<!-- AJOUTE CE SCRIPT À LA FIN DU <script> -->
+<!-- 11 -->
+<div class="question">
 
+    <h2>11. Send me something funny. Literally anything!</h2>
+
+    <input type="file">
+
+</div>
+
+<!-- 12 -->
+<div class="question">
+
+    <h2>12. Wanna tell me about the latest movie you've watched?</h2>
+
+    <textarea placeholder="Write here..."></textarea>
+
+</div>
+
+<!-- 13 -->
+<div class="question">
+
+    <h2>13. Have you been reading anything lately?</h2>
+
+    <textarea placeholder="Write here..."></textarea>
+
+</div>
+
+<!-- 14 -->
+<div class="question">
+
+    <h2>14. Pick a number between 12 and 22.</h2>
+
+    <div class="slider-container">
+
+        <input
+            type="range"
+            min="12"
+            max="22"
+            value="17"
+            id="songSlider"
+            oninput="updateSliderValue()"
+        >
+
+        <div class="sliderValue" id="sliderValue">
+            17
+        </div>
+
+    </div>
+
+</div>
+
+<!-- 15 -->
+<div class="question">
+
+    <button onclick="finishQuiz()">
+        Finish Quiz
+    </button>
+
+    <div class="finalMessage" id="finalMessage"></div>
+
+</div>
+
+<div class="footer">
+    made with questionable science & excessive curiosity
+</div>
+
+</div>
+
+<script>
+
+// WELCOME MESSAGE
 function updateWelcome(){
 
-    const name = document.getElementById("playerName").value;
+    const name =
+    document.getElementById("playerName").value;
 
     if(name.trim() === ""){
+
         document.getElementById("welcomeMessage").innerText =
         "2. Welcome 👀";
+
     } else {
+
         document.getElementById("welcomeMessage").innerText =
         `2. Welcome ${name}!`;
+
     }
 }
+
+// SLIDER
+function updateSliderValue(){
+
+    const slider =
+    document.getElementById("songSlider");
+
+    document.getElementById("sliderValue").innerText =
+    slider.value;
+}
+
+// FINISH
+function finishQuiz(){
+
+    const number =
+    document.getElementById("songSlider").value;
+
+    document.getElementById("finalMessage").innerHTML =
+    `
+    🎉 Congratulations, you just unlocked a playlist with <b>${number}</b> songs.<br><br>
+
+    Coming soon.<br>
+
+    I’ll be analyzing your answers with the utmost scientific interest 👀
+    `;
+}
+
+// REACTION GAME
+let startTime;
+let canClick = false;
+let timeout;
+
+const reactionBox =
+document.getElementById("reactionBox");
+
+const reactionResult =
+document.getElementById("reactionResult");
+
+function startReactionGame(){
+
+    reactionResult.innerHTML = "";
+
+    reactionBox.style.background = "#ff5c5c";
+    reactionBox.innerText = "Wait...";
+    canClick = false;
+
+    const delay =
+    Math.random() * 3000 + 2000;
+
+    timeout = setTimeout(() => {
+
+        reactionBox.style.background =
+        "linear-gradient(135deg,#5dff8b,#37d67a)";
+
+        reactionBox.innerText = "CLICK!";
+        startTime = Date.now();
+        canClick = true;
+
+    }, delay);
+}
+
+reactionBox.addEventListener("click", () => {
+
+    if(!canClick){
+
+        clearTimeout(timeout);
+
+        reactionBox.style.background = "#666";
+        reactionBox.innerText = "Too early 😭";
+
+        return;
+    }
+
+    const reactionTime =
+    Date.now() - startTime;
+
+    reactionResult.innerHTML =
+    `⚡ Your reaction time: <b>${reactionTime} ms</b>`;
+
+    reactionBox.style.background =
+    "linear-gradient(135deg,#6c63ff,#7be0ff)";
+
+    reactionBox.innerText = "Play again?";
+    canClick = false;
+});
+
+</script>
+
+</body>
+</html>
