@@ -1,118 +1,74 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Jeu de Réaction</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #222;
-            color: white;
-        }
+<!-- AJOUTE ÇA JUSTE APRÈS <div class="container"> -->
 
-        #gameBox {
-            width: 300px;
-            height: 300px;
-            margin: 50px auto;
-            background-color: grey;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border-radius: 10px;
-            font-size: 20px;
-        }
+<!-- INTRO -->
+<div class="question">
+    <h2>1. Before we begin, please enter your name:</h2>
 
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+    <input 
+        type="text" 
+        id="playerName" 
+        placeholder="Enter your name..."
+        oninput="updateWelcome()"
+    >
+</div>
 
-        #result, #best, #history {
-            margin-top: 15px;
-            font-size: 18px;
-        }
-    </style>
-</head>
-<body>
+<div class="question">
+    <h2 id="welcomeMessage">2. Welcome 👀</h2>
+</div>
 
-    <h1>⚡ Jeu de Réaction</h1>
-    <button onclick="startGame()">Start</button>
+<!-- ENSUITE RENUMÉROTE TES AUTRES QUESTIONS À PARTIR DE 3 -->
 
-    <div id="gameBox">Clique ici</div>
+<!-- REMPLACE TON ANCIENNE QUESTION 8 PAR ÇA -->
 
-    <div id="result"></div>
-    <div id="best"></div>
-    <div id="history"></div>
+<div class="question">
+    <h2>10. If colours were a family, who would be mom?</h2>
 
-    <script>
-        let startTime;
-        let timeout;
-        let canClick = false;
-        let history = [];
+    <label><input type="radio" name="momColor"> Red</label>
+    <label><input type="radio" name="momColor"> Blue</label>
+    <label><input type="radio" name="momColor"> Green</label>
+    <label><input type="radio" name="momColor"> Yellow</label>
+    <label><input type="radio" name="momColor"> Purple</label>
+    <label><input type="radio" name="momColor"> Orange</label>
+    <label><input type="radio" name="momColor"> Pink</label>
+    <label><input type="radio" name="momColor"> Black</label>
+    <label><input type="radio" name="momColor"> White</label>
 
-        const box = document.getElementById("gameBox");
-        const result = document.getElementById("result");
-        const bestDisplay = document.getElementById("best");
-        const historyDisplay = document.getElementById("history");
+    <label>
+        <input type="radio" name="momColor">
+        Stfu Jimbo you dweeb...
+    </label>
 
-        // Charger le meilleur score
-        let bestScore = localStorage.getItem("bestScore");
-        if (bestScore) {
-            bestDisplay.textContent = "🏆 Meilleur score : " + bestScore + " ms";
-        }
+    <br><br>
 
-        function startGame() {
-            result.textContent = "";
-            box.style.backgroundColor = "red";
-            box.textContent = "Attends...";
+    <h2>Who would be dad?</h2>
 
-            canClick = false;
+    <label><input type="radio" name="dadColor"> Red</label>
+    <label><input type="radio" name="dadColor"> Blue</label>
+    <label><input type="radio" name="dadColor"> Green</label>
+    <label><input type="radio" name="dadColor"> Yellow</label>
+    <label><input type="radio" name="dadColor"> Purple</label>
+    <label><input type="radio" name="dadColor"> Orange</label>
+    <label><input type="radio" name="dadColor"> Pink</label>
+    <label><input type="radio" name="dadColor"> Black</label>
+    <label><input type="radio" name="dadColor"> White</label>
 
-            const delay = Math.random() * 3000 + 2000;
+    <label>
+        <input type="radio" name="dadColor">
+        Stfu Jimbo you dweeb...
+    </label>
+</div>
 
-            timeout = setTimeout(() => {
-                box.style.backgroundColor = "green";
-                box.textContent = "CLIQUE !";
-                startTime = Date.now();
-                canClick = true;
-            }, delay);
-        }
+<!-- AJOUTE CE SCRIPT À LA FIN DU <script> -->
 
-        box.addEventListener("click", () => {
-            if (!canClick) {
-                clearTimeout(timeout);
-                box.style.backgroundColor = "grey";
-                box.textContent = "Trop tôt ! 😅";
-                result.textContent = "Tu as cliqué trop tôt !";
-                return;
-            }
+function updateWelcome(){
 
-            const reactionTime = Date.now() - startTime;
+    const name = document.getElementById("playerName").value;
 
-            // Affichage résultat
-            result.textContent = "⏱ Temps : " + reactionTime + " ms";
-
-            // Historique
-            history.push(reactionTime);
-            historyDisplay.textContent = "Historique : " + history.join(" ms | ") + " ms";
-
-            // Meilleur score
-            if (!bestScore || reactionTime < bestScore) {
-                bestScore = reactionTime;
-                localStorage.setItem("bestScore", bestScore);
-                bestDisplay.textContent = "🏆 Nouveau record : " + bestScore + " ms 🎉";
-            } else {
-                bestDisplay.textContent = "🏆 Meilleur score : " + bestScore + " ms";
-            }
-
-            box.style.backgroundColor = "grey";
-            box.textContent = "Rejouer ?";
-            canClick = false;
-        });
-    </script>
-
-</body>
-</html>
+    if(name.trim() === ""){
+        document.getElementById("welcomeMessage").innerText =
+        "2. Welcome 👀";
+    } else {
+        document.getElementById("welcomeMessage").innerText =
+        `2. Welcome ${name}!`;
+    }
+}
